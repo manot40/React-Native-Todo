@@ -4,23 +4,23 @@ import {Modal, FormControl, Input, Button} from 'native-base';
 interface IProps {
   index: Number;
   onSubmit: (input: string) => void;
-  isClosed: (state: number) => void;
+  isCancel: (state: number) => void;
 }
 
-const TodoEdit = ({index, onSubmit, isClosed}: IProps) => {
+const TodoEdit = ({index, onSubmit, isCancel}: IProps) => {
   const [modalState, setModalState] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
   React.useEffect(() => {
     index > -1 && setModalState(true);
+    return () => setInputValue('');
   }, [index]);
   function beginSubmit() {
     onSubmit(inputValue);
     closeModal();
   }
   function closeModal() {
-    isClosed(-1);
+    isCancel(-1);
     setModalState(false);
-    setInputValue('');
   }
   return (
     <Modal isOpen={modalState} onClose={() => closeModal()}>

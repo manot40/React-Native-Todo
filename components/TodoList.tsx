@@ -86,7 +86,7 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
       <TodoEdit
         onSubmit={submitChange}
         index={editIndex}
-        isClosed={setEditIndex}
+        isCancel={setEditIndex}
       />
     </VStack>
   );
