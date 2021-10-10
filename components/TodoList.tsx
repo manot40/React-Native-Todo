@@ -24,6 +24,12 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
     editTodo(editIndex, value);
     setEditIndex(-1);
   }
+  function prettyString(string: string) {
+    const pretty = string.split(' ').map(word => {
+      return word.charAt(0).toUpperCase() + word.substring(1);
+    });
+    return pretty.join(' ');
+  }
   return (
     <VStack space={2}>
       {!list.length && (
@@ -35,18 +41,19 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
         <HStack
           w="100%"
           justifyContent="space-between"
-          alignItems="center"
           key={item.title + itemIndex.toString()}>
           <Checkbox
             isChecked={item.isCompleted}
-            colorScheme="info"
             onChange={() => statusChanged(itemIndex)}
+            colorScheme="info"
             value={item.title}>
             <Text
+              isTruncated
+              maxW={item.isCompleted ? '200' : '260'}
               mx="2"
               strikeThrough={item.isCompleted}
               color={item.isCompleted ? 'gray.400' : 'coolGray.800'}>
-              {item.title}
+              {prettyString(item.title)}
             </Text>
           </Checkbox>
           <HStack justifyContent="space-between">
@@ -63,7 +70,7 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
                 <Text
                   mx="2"
                   color={item.isCompleted ? 'gray.400' : 'coolGray.800'}>
-                  {'Done: ' + item.done}
+                  {item.done}
                 </Text>
               )}
             </Flex>
