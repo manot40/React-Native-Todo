@@ -18,7 +18,12 @@ interface IProps {
   editTodo: (index: number, value: string) => void;
 }
 
-const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
+const TodoList: React.FC<IProps> = ({
+  list,
+  delTodo,
+  editTodo,
+  statusChanged,
+}) => {
   const [editIndex, setEditIndex] = React.useState(-1);
   function submitChange(value: string) {
     editTodo(editIndex, value);

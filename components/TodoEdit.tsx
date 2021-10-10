@@ -7,7 +7,7 @@ interface IProps {
   isCancel: (state: number) => void;
 }
 
-const TodoEdit = ({index, onSubmit, isCancel}: IProps) => {
+const TodoEdit: React.FC<IProps> = ({index, onSubmit, isCancel}) => {
   const [modalState, setModalState] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
   React.useEffect(() => {

@@ -13,7 +13,7 @@ interface IProps {
   action: (type: string) => void;
 }
 
-const TodoAction = ({action}: IProps) => {
+const TodoAction: React.FC<IProps> = ({action}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [modalState, setModal] = React.useState(false);
   return (
