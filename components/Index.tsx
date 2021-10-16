@@ -92,6 +92,10 @@ const Index = () => {
               _focus={{
                 borderColor: 'darkBlue.500',
               }}
+              onEndEditing={() => {
+                addItem(inputValue);
+                setInputValue('');
+              }}
               placeholder="Add Task"
             />
             <IconButton
