@@ -1,5 +1,5 @@
 import React from 'react';
-import {ITodo} from './Index';
+import type {ITodo} from './Index';
 import TodoEdit from './TodoEdit';
 import {
   IconButton,

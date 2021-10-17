@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Actionsheet,
   Button,
@@ -7,13 +8,8 @@ import {
   Modal,
   Text,
 } from 'native-base';
-import React from 'react';
 
-interface IProps {
-  action: (type: string) => void;
-}
-
-const TodoAction = ({action}: IProps) => {
+const TodoAction = ({action}: {action: (type: string) => void}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [modalState, setModal] = React.useState(false);
   return (

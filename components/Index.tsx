@@ -27,7 +27,7 @@ const Index = () => {
     if (inputValue !== '') {
       const temp = [...list];
       temp.unshift({
-        title: title,
+        title,
         isCompleted: false,
       });
       setList(temp);
