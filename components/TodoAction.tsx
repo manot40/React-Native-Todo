@@ -9,7 +9,7 @@ import {
   Text,
 } from 'native-base';
 
-const TodoAction = ({action}: {action: (type: string) => void}) => {
+export default ({action}: {action: (type: string) => void}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [modalState, setModal] = React.useState(false);
   return (
@@ -88,5 +88,3 @@ const TodoAction = ({action}: {action: (type: string) => void}) => {
     </>
   );
 };
-
-export default TodoAction;

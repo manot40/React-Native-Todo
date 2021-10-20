@@ -18,17 +18,17 @@ interface IProps {
   editTodo: (index: number, value: string) => void;
 }
 
-const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
+export default ({list, delTodo, editTodo, statusChanged}: IProps) => {
   const [editIndex, setEditIndex] = React.useState(-1);
   function submitChange(value: string) {
     editTodo(editIndex, value);
     setEditIndex(-1);
   }
-  function prettyString(string: string) {
-    const pretty = string.split(' ').map(word => {
-      return word.charAt(0).toUpperCase() + word.substring(1);
-    });
-    return pretty.join(' ');
+  function prettyString(sentence: string) {
+    return sentence
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.substring(1))
+      .join(' ');
   }
   return (
     <VStack space={2}>
@@ -37,14 +37,14 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
           No Task Added
         </Text>
       )}
-      {list.map((item, itemIndex) => (
+      {list.map((item, index) => (
         <HStack
           w="100%"
           justifyContent="space-between"
-          key={item.title + itemIndex.toString()}>
+          key={item.title + index.toString()}>
           <Checkbox
             isChecked={item.isCompleted}
-            onChange={() => statusChanged(itemIndex)}
+            onChange={() => statusChanged(index)}
             colorScheme="info"
             value={item.title}>
             <Text
@@ -63,7 +63,7 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
                   color="darkBlue.500"
                   alignSelf="center"
                   marginRight="20px"
-                  onPress={() => setEditIndex(itemIndex)}>
+                  onPress={() => setEditIndex(index)}>
                   EDIT
                 </Text>
               ) : (
@@ -76,7 +76,7 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
               size="sm"
               colorScheme="trueGray"
               icon={<CloseIcon size="16px" color="red.400" />}
-              onPress={() => delTodo(itemIndex)}
+              onPress={() => delTodo(index)}
             />
           </HStack>
         </HStack>
@@ -89,5 +89,3 @@ const TodoList = ({list, delTodo, editTodo, statusChanged}: IProps) => {
     </VStack>
   );
 };
-
-export default TodoList;

@@ -7,7 +7,7 @@ interface IProps {
   isCancel: (state: number) => void;
 }
 
-const TodoEdit = ({index, onSubmit, isCancel}: IProps) => {
+export default ({index, onSubmit, isCancel}: IProps) => {
   const [modalState, setModalState] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
   React.useEffect(() => {
@@ -59,5 +59,3 @@ const TodoEdit = ({index, onSubmit, isCancel}: IProps) => {
     </Modal>
   );
 };
-
-export default TodoEdit;

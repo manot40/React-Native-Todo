@@ -20,7 +20,7 @@ export interface ITodo {
   done?: string;
 }
 
-const Index = () => {
+export default () => {
   const [list, setList] = React.useState<ITodo[]>([]);
   const [inputValue, setInputValue] = React.useState('');
   function addItem(title: string) {
@@ -124,5 +124,3 @@ const Index = () => {
     </View>
   );
 };
-
-export default Index;
